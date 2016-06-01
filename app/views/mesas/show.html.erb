@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @mesa.numero %>
+</p>
+
+<p>
+  <strong>Codigo Centro:</strong>
+  <%= @mesa.centro_id  %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @mesa.user_id %>
+</p>
+<p>
+  <strong>Votos Lista:</strong>
+  <%= @mesa.lista %>
+</p>
+<p>
+  <strong>Votos Teodoro Campos:</strong>
+  <%= @mesa.teodoro %>
+</p>
+<p>
+  <strong>Votos Alfonso Marquina:</strong>
+  <%= @mesa.marquina %>
+</p>
+<p>
+  <strong>Votos Nulos:</strong>
+  <%= @mesa.nulo %>
+</p>
+<p>
+  <strong>Votos Emitidos:</strong>
+  <%= @mesa.votos %>
+</p>
+
+<%= link_to 'Editar', edit_mesa_path(@mesa) %> |
+<%= link_to 'Mesas', mesas_path%> |
+<%= link_to 'Atras', pages_home_path %>
+

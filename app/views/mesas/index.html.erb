@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Nueva Mesa', new_mesa_path , class: "btn btn-primary btn-lg"%>
+<h1>Listing Mesas</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Numero</th>
+	
+      <th colspan=2>Centro</th>
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mesas.each do |mesa| %>
+      <tr>
+        <td><%= mesa.numero %></td>
+        <td><%= mesa.centro_id %></td>
+        <td><%= mesa.centro_id %> <%# Centro.find_by_codigo(mesa.centro_id).nombre %></td>        
+	<td><%= mesa.lista %></td>
+        <td><%= mesa.teodoro %></td>
+        <td><%= mesa.marquina %></td>
+        <td><%= mesa.nulo %></td>
+        <td><%= mesa.votos %></td>
+        <td><%= link_to 'Show', mesa %></td>
+        <td><%= link_to 'Edit', edit_mesa_path(mesa) %></td>
+        <td><%= link_to 'Destroy', mesa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mesa', new_mesa_path %>

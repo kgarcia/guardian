@@ -1,0 +1,54 @@
+<div class="col-lg-6 col-lg-offset-3">
+<%= form_for(@centro) do |f| %>
+  <% if @centro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@centro.errors.count, "error") %> prohibited this centro from being saved:</h2>
+
+      <ul>
+      <% @centro.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codigo %><br>
+    <%= f.text_field :codigo  , :class => "form-control"%>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre , :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :municipio %><br>
+     <%= f.select :municipio_id, options_for_select(@municipios.collect { |municipio|
+    [municipio.nombre.titleize, municipio.id] }), {}, { id: 'municipios_select' } %>
+  </div>
+
+  
+  <div class="field">
+    <%= f.label :parroquia %><br>
+    <%= f.select :parroquia_id, options_for_select(@parroquias.collect { |parroquia|
+    [parroquia.nombre.titleize, parroquia.id] }), {}, { id: 'parroquias_select' } %>
+    
+       <%# options_from_collection_for_select(@parroquias, 'id', 'nombre') %>
+    <%# f.select 'parroquia_id', options_from_collection_for_select(@parroquias, 'id', 'nombre') %>
+  </div>
+  <div class="field">
+    <%= f.label :electores %><br>
+    <%= f.number_field :electores , :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :mesas %><br>
+    <%= f.number_field :mesas , :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :testigos %><br>
+    <%= f.number_field :testigos , :class => "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
+</div>

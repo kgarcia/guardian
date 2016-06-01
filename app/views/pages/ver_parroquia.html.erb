@@ -1,0 +1,50 @@
+
+
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+    <h2 align=center >Parroquia</h2>
+  <h3 align="center"> <%= @parroquia.nombre%></h3>
+  <hr/>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th colspan=2 align=center >Centro</th>
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Total</th>
+       <th>% Lista</th>
+      <th>% Marquina</th>
+      <th>% Campos</th>
+      <th>% Promedio de votos de la Unidad</th>
+        <th>% Abstencion</th>
+    </tr>
+    
+  </thead>
+
+  <tbody>
+    
+      <% @centros.each do |centro| %>
+  
+      <tr>
+        <td><%= link_to centro.codigo, pages_ver_centro_path(:codigo => centro.codigo) %></td>
+        <td><%= link_to centro.nombre, pages_ver_centro_path(:codigo => centro.codigo) %></td>
+        <td><%= centro.total_lista %></td>
+        <td><%= centro.total_teodoro %></td>
+        <td><%= centro.total_marquina %></td>
+        <td><%= centro.total_nulo %></td>
+        <td><%= centro.total_total %></td>
+        <td><%= centro.porcen_lista %></td>
+        <td><%= centro.porcen_marquina %></td>
+        <td><%= centro.porcen_teodoro %></td>
+                  <td><%=(centro.electores-centro.total_total)*100/centro.electores %></td>
+          </tr>
+           
+      </tr>
+      <% end %>
+    
+  </tbody>
+</table>
+</div>
+</div>

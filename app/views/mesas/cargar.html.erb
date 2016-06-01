@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>Lista de Mesas C3 *insertar busqueda de centro*</h1>   
+<div class="row">
+  <%= form_tag({controller: "/pages", action: "home"}, method: "get", id:"search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Buscar Centro" %>
+  <%= submit_tag "Search", :class => "btn-md btn-primary" %>
+  <% end %>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th colspan="2">Centro</th>
+      <th>Mesa</th>
+      <th>User</th>
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Total</th>
+      <th>  </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mesas.each do |mesa| %>
+      <tr>
+        <td><%= Centro.find_by_codigo(mesa.centro_id).codigo %></td>
+        <td><%= Centro.find_by_codigo(mesa.centro_id).nombre %></td>
+        <td><%= mesa.numero %></td>
+        <td><%= User.find_by_username(mesa.user_id).username %></td>
+        <td><%= mesa.lista %></td>
+        <td><%= mesa.teodoro %></td>
+        <td><%= mesa.marquina %></td>
+        <td><%= mesa.nulo %></td>
+        <td><%= mesa.votos %></td>
+        <td><%= link_to 'Cargar', edit_mesa_path(mesa) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+<br>
+
+<%= link_to 'New Mesa', new_mesa_path %>

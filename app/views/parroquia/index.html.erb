@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Parroquia</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Municipio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parroquia.each do |parroquium| %>
+      <tr>
+        <td><%= parroquium.nombre %></td>
+        <td><%= @municipios.find(parroquium.municipio).nombre %></td>
+        <td><%= link_to 'Show', parroquium %></td>
+        <td><%= link_to 'Edit', edit_parroquium_path(parroquium) %></td>
+        <td><%= link_to 'Destroy', parroquium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Parroquium', new_parroquium_path %>

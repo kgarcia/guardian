@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing <%= @centros.size %> Centros </h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Municipio</th>
+      <th>Parroquia</th>
+      <th>Electores</th>
+      <th>Mesas</th>
+      <th>Testigos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @centros.each do |centro| %>
+      <tr>
+        <td><%= centro.codigo %></td>
+        <td><%= centro.nombre %></td>
+        <td><%= @municipios.find(centro.municipio_id).nombre %></td>
+        <td><%= @parroquias.find(centro.parroquia_id).nombre %></td>
+        <td><%= centro.electores %></td>
+        <td><%= centro.mesas %></td>
+        <td><%= centro.testigos %></td>
+        <td><%= link_to 'Show', centro %></td>
+        <td><%= link_to 'Edit', edit_centro_path(centro) %></td>
+        <td><%= link_to 'Destroy', centro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Centro', new_centro_path %>

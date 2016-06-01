@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @parroquium.nombre %>
+</p>
+
+<p>
+  <strong>Municipio:</strong>
+  <%= @municipios.find(@parroquium.municipio).nombre %>
+</p>
+
+<%= link_to 'Edit', edit_parroquium_path(@parroquium) %> |
+<%= link_to 'Back', parroquia_path %>

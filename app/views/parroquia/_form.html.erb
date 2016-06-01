@@ -1,0 +1,30 @@
+<%= form_for(@parroquium) do |f| %>
+  <% if @parroquium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parroquium.errors.count, "error") %> prohibited this parroquium from being saved:</h2>
+
+      <ul>
+      <% @parroquium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :municipio %><br>
+   <% options_from_collection_for_select(@municipios, 'id', 'nombre') %>
+    <%= f.select 'municipio_id', options_from_collection_for_select(@municipios, 'id', 'nombre') %>
+      <%# f.select :municipio_id, options_for_select(@municipios.collect { |municipio|
+      [municipio.nombre.titleize, municipio.id] }, 0), {}, { id: 'municipios_select' } %>
+  
+    <%# f.text_field :municipio_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

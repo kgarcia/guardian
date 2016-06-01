@@ -1,0 +1,46 @@
+
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+    <h2 align=center >Municipios</h2>
+  <hr/>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Municipios</th>
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Total</th>
+      <th>% Lista</th>
+      <th>% Marquina</th>
+      <th>% Campos</th>
+      <th>% Abstencion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <% @municipios.each do |municipio| %>
+  
+      <tr>
+       <td><%= link_to municipio.nombre, pages_ver_municipio_path(:codigo => municipio.id ) %></td>
+        <td><%= municipio.total_lista %></td>
+        <td><%= municipio.total_teodoro %></td>
+        <td><%= municipio.total_marquina %></td>
+        <td><%= municipio.total_nulo %></td>
+        <td><%= municipio.total_total %></td>
+        <td><%= municipio.porcen_lista %></td>
+        <td><%= municipio.porcen_marquina %></td>
+        <td><%= municipio.porcen_teodoro %></td>
+      <% if municipio.electores !=0%>
+        <td><%=(municipio.electores-municipio.total_total)*100/municipio.electores %></td>
+          </tr>
+          <%end%> 
+        
+      <% end %>
+    
+  </tbody>
+</table>
+</div>
+</div>

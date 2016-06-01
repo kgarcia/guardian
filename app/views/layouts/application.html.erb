@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guardianes del Voto!</title>
+  <link href="/assets/flag.ico" rel="shortcut icon" />
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container-fluid">
+<div class="jumbotron col-lg-12 col-md-12">
+      <div class="col-md-10 col-sm-6 col-xs-6">
+          </br>
+          <h2><em><b>Guardianes del voto! <i class="fa fa-thumbs-up"></i></b></em></h2>
+      </div>
+</div>
+
+
+<%= yield %>
+
+<br/><br/><br/><br/>
+<div class="col-xs-8 col-md-2 col-md-offset-10">
+<% if user_signed_in? %>
+ <%= link_to "Inicio", root_path,  class: "btn btn-primary btn-xs fa fa-home" %>
+ <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete , class: "btn btn-primary btn-xs fa fa-user" %>
+ 
+<%end%>
+</div>
+<div class="col-lg-12 col-sm-12 col-xs-12">
+<p>Diseñado por <strong></stron><em></em>CreativeKit</em></strong> |<em><strong> CreativeKitVE@gmail.com</em></strong></p>
+
+<p>Copyright © 2015. Guardianes. Todos los Derechos Reservados<p></p>
+</div>
+
+</div>
+<!--Fin de container fluid-->
+
+
+
+<style>
+   .jumbotron{
+        height: 180px;
+        width: 100%; 
+        padding: 30px;
+        background-image: url("/assets/tricolor2.png");
+        box-shadow: 0px 5px 10px #888;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    
+    h1{
+        font-weight: bold;
+    }
+    
+</style>
+</body>
+</html>

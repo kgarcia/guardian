@@ -1,0 +1,71 @@
+<div class="container-fluid">   
+<div align=center class="col-lg-11 col-lg-offset-1 "  >
+<% if user_signed_in? %>
+    <% if current_user.username=="4386678" %>
+      <h2>Bienvenido, Gilberto Carmona</h1>
+      <br/><br/>
+        <div class="col-md-4 col-md-offset-2">
+           <%= link_to image_tag('voto.png', class: "img-responsive img-circle lil"), new_mesa_path , :class => "img-responsive"%>
+           <%= link_to 'Cargar Mesa', new_mesa_path , class: "btn btn-primary btn-xs" %>
+        </div>
+        <div class="col-md-4">
+             <%= link_to image_tag('List.png', class: "img-responsive img-circle lil"), pages_reporte_path , :class => "img-responsive"%>
+             <%= link_to 'Reportes de Centro de Votación', pages_reporte_path , class: "btn btn-primary btn-xs" %>
+        </div>
+        
+         
+
+    <% else %>
+         
+         
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-8 col-md-4 col-md-offset-4">
+                    <h1 align="center">Bienvenido, <%= current_user.nombre %></h1>
+                </div>
+            </div>
+            <br/><br/><br/>
+            <div class="row">
+                <div class="col-xs-9 col-md-4 col-md-offset-4">
+                     <%= link_to image_tag('voto.png', class: "img-responsive img-circle lil"), new_mesa_path , :class => "img-responsive"%>
+                     <%= link_to 'Cargar Mesa', new_mesa_path , class: "btn btn-primary btn-xs" %>
+			<%= link_to 'Ver Mesas', mesas_path%>
+                </div>
+            </div>
+            <br/><br/><br/><br/>
+        </div>
+         
+       
+    <%end%>
+    
+<% else %>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-11">
+                 <br/>
+                 <div align= center >
+                    <%= link_to image_tag('unidad.jpg', class: "img-responsive img-circle"), user_session_path, :class => "img-responsive"%>
+                    
+                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 col-md-3 col-xs-offset-9">
+                 <%= form_tag({:controller => "pages", :action => "validar"}, :method => "get") do %>
+                <%= label_tag "código", "Código de usuario" %>
+                <%= password_field_tag "codigo", "", :size => 5, :maxlenght => 5, :placeholder => "Código", :required => "required" %>
+                <%= submit_tag "Registrar" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<%end%>
+</div>
+</div>
+
+<style>
+    .lil{
+      width: 340px; 
+      height: 340px;
+    }
+</style>

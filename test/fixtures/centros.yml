@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codigo: MyString
+  nombre: MyString
+  parroquia_id: 
+  electores: 1
+  mesas: 1
+  testigos: 1
+
+two:
+  codigo: MyString
+  nombre: MyString
+  parroquia_id: 
+  electores: 1
+  mesas: 1
+  testigos: 1

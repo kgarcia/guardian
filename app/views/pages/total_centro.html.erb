@@ -1,0 +1,97 @@
+<div class="col-lg-3 col-lg-offset-6">
+ <%= form_tag({controller: "/pages", action: "total_centro"}, method: "get", id:"search-form") do %>
+                        <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+                        <%= submit_tag "Buscar", :class => "btn-md btn-primary" %>
+                        <% end %>
+</div>
+<div class="row">
+  <% if @search.presence %>
+  <div class="col-lg-10 col-lg-offset-1">
+  <table class="table table-bordered">
+  <thead>
+    <h2>Busqueda</h2>
+    <tr>
+      <th colspan="2">Centro</th>
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Votos Emitidos</th>
+      <th>%Lista</th>
+      <th>% Marquina</th>
+      <th>% Campos</th>
+      <th>% Abstencion</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @search.each do |centro| %>
+      <tr>
+         <td><%= link_to centro.codigo, pages_ver_centro_path(:codigo => centro.codigo ) %></td>
+        <td><%= link_to centro.nombre, pages_ver_centro_path(:codigo => centro.codigo ) %></td>
+        <td><%= centro.total_lista %></td>
+        <td><%= centro.total_teodoro %></td>
+        <td><%= centro.total_marquina %></td>
+        <td><%= centro.total_nulo %></td>
+        <td><%= centro.total_total %></td>
+        <td><%= centro.porcen_lista %>$</td>
+        <td><%= centro.porcen_marquina %>$</td>
+        <td><%= centro.porcen_teodoro %>$</td>
+        <td><%= centro.abstencion %></td>
+        
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+  
+  <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+<table class="table table-bordered">
+  <thead>
+    <h2>Centros de Votacion</h2>
+    <tr>
+      <th colspan="2">Centro</th>
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Votos Emitidos</th>
+       <th>%Lista</th>
+      <th>% Marquina</th>
+      <th>% Campos</th>
+      <th>% Promedio de votos de la Unidad</th>
+      <th>% Abstencion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @centros.each do |centro| %>
+      <tr>
+         <td><%= link_to centro.codigo, pages_ver_centro_path(:codigo => centro.codigo ) %></td>
+        <td><%= link_to centro.nombre, pages_ver_centro_path(:codigo => centro.codigo ) %></td>
+        <td><%= centro.total_lista %></td>
+        <td><%= centro.total_teodoro %></td>
+        <td><%= centro.total_marquina %></td>
+        <td><%= centro.total_nulo %></td>
+        <td><%= centro.total_total %></td>
+         <td><%= centro.porcen_lista %></td>
+        <td><%= centro.porcen_marquina %></td>
+        <td><%= centro.porcen_teodoro %></td>
+        <% if centro.total_total !=0%>
+        <td><%= (centro.total_lista+centro.total_marquina+centro.total_teodoro)*100/centro.total_total %></td>
+      <% end %>
+      <% if centro.electores !=0%>
+      <td><%= (centro.electores-centro.total_total)*100/centro.electores %> </td>
+      <% end %>
+      <% end %>
+  </tbody>
+</table>
+
+
+</div>
+</div>

@@ -1,0 +1,59 @@
+<div class="col-md-4 col-md-offset-4">
+<%= form_for(@mesa) do |f| %>
+  <% if @mesa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mesa.errors.count, "error") %> prohibited this mesa from being saved:</h2>
+
+      <ul>
+      <% @mesa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codigo_centro %><br>
+    <%= f.number_field :centro_id, :class => "form-control", value: 110 %>
+  </div>
+    <div class="field">
+    <%= f.label :numero_de_mesa %><br>
+    <%= f.text_field :numero, :class => "form-control"  %>
+  </div>
+  <div class="field">
+    <% f.label :user_id %><br>
+    <%= f.hidden_field :user_id, value: current_user.username, :readonly => true, :class => "form-control" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :voto_lista %><br>
+    <%= f.number_field :lista, :class => "form-control" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :teodoro_campos %><br>
+    <%= f.number_field :teodoro, :class => "form-control" %>
+  </div>
+    
+  <div class="field">
+    <%= f.label :alfonso_marquina %><br>
+    <%= f.number_field :marquina, :class => "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :votos_nulos %><br>
+    <%= f.number_field :nulo, :class => "form-control" %>
+  </div>  
+
+  <div class="field">
+    <%= f.label :total_votos %><br>
+    <%= f.number_field :votos, :class => "form-control" %>
+  </div>  
+  
+  
+  <div class="actions" align='center' >
+    <%= f.submit 'Registrar Mesa' ,class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+

@@ -1,0 +1,43 @@
+
+
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+  
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      
+      <th colspan="2">Centro</th>
+      
+      <th>Mesa</th>
+
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <% @mesas.each do |mesa| %>
+  
+      <tr>
+        <td><%= link_to Centro.find_by_codigo(mesa.centro_id).codigo, pages_ver_centro_path(:codigo => mesa.centro_id ) %></td>
+        <td><%= link_to Centro.find_by_codigo(mesa.centro_id).nombre, pages_ver_centro_path(:codigo => mesa.centro_id ) %></td>
+        <td><%= mesa.numero %></td>
+
+        <td><%= mesa.lista %></td>
+        <td><%= mesa.teodoro %></td>
+        <td><%= mesa.marquina %></td>
+        <td><%= mesa.nulo %></td>
+        <td><%= mesa.votos %></td>
+        
+      </tr>
+      <% end %>
+    
+  </tbody>
+</table>
+</div>
+</div>

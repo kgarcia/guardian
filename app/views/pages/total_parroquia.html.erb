@@ -1,0 +1,47 @@
+
+
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+    <h2 align=center >Parroquias</h2>
+  <hr/>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>parroquia</th>
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Total</th>
+       <th>% Lista</th>
+      <th>% Marquina</th>
+      <th>% Campos</th>
+      <th>% Abstencion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <% @parroquias.each do |parroquia| %>
+  
+      <tr>
+       <td><%= link_to parroquia.nombre, pages_ver_parroquia_path(:codigo => parroquia.id ) %></td>
+        <td><%= parroquia.total_lista %></td>
+        <td><%= parroquia.total_teodoro %></td>
+        <td><%= parroquia.total_marquina %></td>
+        <td><%= parroquia.total_nulo %></td>
+        <td><%= parroquia.total_total %></td>
+         <td><%= parroquia.porcen_lista %></td>
+        <td><%= parroquia.porcen_marquina %></td>
+        <td><%= parroquia.porcen_teodoro %></td>
+
+        <td><%=(parroquia.electores-parroquia.total_total)*100/parroquia.electores %></td>
+          </tr>
+   
+      </tr>
+      <% end %>
+    
+  </tbody>
+</table>
+</div>
+</div>

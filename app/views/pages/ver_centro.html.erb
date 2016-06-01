@@ -1,0 +1,50 @@
+
+
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+    <h2 align=center >Centro de votacion</h2>
+  <h3 align="center"> Codigo: <%= @centro.codigo %>,  <%= @centro.nombre %></h3>
+  <hr/>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Mesa</th>
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Total</th>
+       <th>% Lista</th>
+      <th>% Marquina</th>
+      <th>% Campos</th>
+      <th>% Abstencion</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <% @mesas.each do |mesa| %>
+  
+    
+      <tr>
+        <td><%= mesa.numero %></td>
+        <td><%= mesa.lista %></td>
+        <td><%= mesa.teodoro %></td>
+        <td><%= mesa.marquina %></td>
+        <td><%= mesa.nulo %></td>
+        <td><%= mesa.votos %></td>
+        <td><%= @centro.porcen_lista %></td>
+        <td><%= @centro.porcen_marquina %></td>
+        <td><%= @centro.porcen_teodoro %></td>
+        <% if @centro.electores !=0%>
+        <td><%=(@centro.electores-@centro.total_total)*100/@centro.electores %></td>
+          </tr>
+          <%end%> 
+        </tr>
+       <%end%>
+      </tr>
+  </tbody>
+</table>
+</div>
+</div>

@@ -1,0 +1,97 @@
+<h2 align=center >Resultados Circuito 3</h2>
+<hr>
+<div align="center" class="row">
+ <div class="col-lg-3">
+      <%= link_to 'Municipios' , pages_total_municipio_path, class: "btn btn-primary btn-lg" %>
+ </div>
+ <div class="col-lg-3">
+      <%= link_to 'Parroquias', pages_total_municipio_path, class: "btn btn-primary btn-lg" %>
+ </div>
+ <div class="col-lg-3">
+     
+      <%= link_to 'Centros', pages_total_centro_path, class: "btn btn-primary btn-lg" %>
+ </div>
+ <div class="col-lg-3">
+      <%= link_to 'Mesas' , pages_total_mesa_path, class: "btn btn-primary btn-lg" %>
+     
+ </div>
+ 
+ </div>
+ 
+ <div class="row">
+     <div class="col-lg-10 col-lg-offset-1">
+    
+  <hr/>
+  
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Total</th>
+     <th>% Lista</th>
+      <th>% Marquina</th>
+      <th>% Campos</th>
+      <th>% Abstencion </th>
+    </tr>
+  </thead>
+
+  <tbody>
+  
+      <tr>
+        <td><%= @circuito.total_lista %></td>
+        <td><%= @circuito.total_teodoro %></td>
+        <td><%= @circuito.total_marquina %></td>
+        <td><%= @circuito.total_nulo %></td>
+        <td><%= @circuito.total_total %></td>
+         <td><%= @circuito.porcen_lista %></td>
+        <td><%= @circuito.porcen_marquina %></td>
+        <td><%= @circuito.porcen_teodoro %></td>
+        <td><%= (@circuito.electores-@circuito.total_total)*100/@circuito.electores %></td>
+      </tr>
+    
+  </tbody>
+</table>
+  
+  
+  <hr/>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+        <th>Municipio</th>
+      <th>Voto Lista</th>
+      <th>Campos</th>
+      <th>Marquina</th>
+      <th>Nulos</th>
+      <th>Total</th>
+       <th>%Lista</th>
+      <th>% Marquina</th>
+      <th>% Campos</th>
+      <th>% Abstencion </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <% @municipios.each do |municipio| %>
+  
+      <tr>
+       <td><%= link_to municipio.nombre, pages_ver_municipio_path(:codigo => municipio.id ) %></td>
+        <td><%= municipio.total_lista %></td>
+        <td><%= municipio.total_teodoro %></td>
+        <td><%= municipio.total_marquina %></td>
+        <td><%= municipio.total_nulo %></td>
+        <td><%= municipio.total_total %></td>
+        <td><%= municipio.porcen_lista %></td>
+        <td><%= municipio.porcen_teodoro %></td>
+        <td><%= municipio.porcen_marquina %></td>
+        <td><%=(municipio.electores-municipio.total_total)*100/municipio.electores %></td>
+      <% end %>
+     </tr>
+  </tbody>
+</table>
+</div>
+ </div>
+ 

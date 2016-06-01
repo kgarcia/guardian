@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @centro.codigo %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @centro.nombre %>
+</p>
+
+<p>
+  <strong>Municipio:</strong>
+  <%= @municipios.find(@centro.municipio_id).nombre %>
+</p>
+
+<p>
+  <strong>Parroquia:</strong>
+  <%= @parroquias.find(@centro.parroquia_id).nombre %>
+</p>
+
+<p>
+  <strong>Electores:</strong>
+  <%= @centro.electores %>
+</p>
+
+<p>
+  <strong>Mesas:</strong>
+  <%= @centro.mesas %>
+</p>
+
+<p>
+  <strong>Testigos:</strong>
+  <%= @centro.testigos %>
+</p>
+
+<%= link_to 'Edit', edit_centro_path(@centro) %> |
+<%= link_to 'Back', centros_path %>
+<%= link_to 'Nuevo', new_centro_path %>
